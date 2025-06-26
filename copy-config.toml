@@ -1,0 +1,5 @@
+my_pubkey = "xxx"    # your wallet pubkey
+copy_pubkey = "xxx"  # wallet to copy
+grpc_url = "xxx"     # your grpc URL
+
+# grpc_token = "xxx"  # optional
