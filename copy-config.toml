@@ -2,4 +2,23 @@ my_pubkey = "xxx"       # your wallet pubkey
 copy_pubkeys = ["xxx"]  # wallet to copy
 grpc_url = "xxx"        # your grpc URL
 
-# grpc_token = "xxx"    # optional
+# Full documentation: https://hweippy.gitbook.io/solanamevbot-copystrat/configuration/all-entries
+
+# grpc_token = "xxx"
+# smb_config = "config.toml"
+# smb_onchain_binary = "smb-onchain"
+
+# [misc]
+# print_stats_interval = 1
+# stop_sol_threshold = 0.1
+
+# [sessions]
+# blacklisted_mints = []
+# timeout = 5
+# process_delay = 400
+# default_lookup_tables = ["4sKLJ1Qoudh8PJyqBeuKocYdsZvxTcRShUt9aKqwhgvC"]
+# copy_jito_no_failure_only = true
+# spam_to_jito = false
+# max_jito_tip_lamports = 1_000_000
+# max_priority_fees_lamports = 1_000_000
+# fees_history_size = 40
