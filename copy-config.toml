@@ -4,6 +4,8 @@ grpc_url = "xxx"        # your grpc URL
 
 # Full documentation: https://hweippy.gitbook.io/copychain/configuration/all-entries
 
+# grpc_type = "yellowstone"
+# grpc_light = false
 # grpc_token = "xxx"
 # smb_config = "config.toml"
 # smb_onchain_binary = "smb-onchain"
