@@ -10,17 +10,23 @@ grpc_url = "xxx"        # your grpc URL
 # smb_config = "config.toml"
 # smb_onchain_binary = "smb-onchain"
 
-# [misc]
-# print_stats_interval = 1
-# stop_sol_threshold = 0.1
-
 # [sessions]
 # blacklisted_mints = []
 # timeout = 5
+# copy_jito_no_failure_only = true
+# fees_history_size = 40
+
+# [sending]
 # process_delay = 400
 # default_lookup_tables = ["4sKLJ1Qoudh8PJyqBeuKocYdsZvxTcRShUt9aKqwhgvC"]
-# copy_jito_no_failure_only = true
-# spam_to_jito = false
 # max_jito_tip_lamports = 1_000_000
 # max_priority_fees_lamports = 1_000_000
-# fees_history_size = 40
+# compute_units = { strategy = "Percentage", percentage = 100 }
+# compute_unit_price = { strategy = "Random" }
+# jito_tip_config = { strategy = "Random" }
+# vendors_tip_amount = { strategy = "Random" }
+# vendors_compute_unit_price = { strategy = "Random" }
+
+# [misc]
+# print_stats_interval = 1
+# stop_sol_threshold = 0.1
