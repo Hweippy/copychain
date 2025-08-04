@@ -22,10 +22,10 @@ grpc_url = "xxx"        # your grpc URL
 # max_jito_tip_lamports = 1_000_000
 # max_priority_fees_lamports = 1_000_000
 # compute_units = { strategy = "Percentage", percentage = 100 }
-# compute_unit_price = { strategy = "Random" }
-# jito_tip_config = { strategy = "Random" }
-# vendors_tip_amount = { strategy = "Random" }
-# vendors_compute_unit_price = { strategy = "Random" }
+# dynamic_compute_unit_price = { strategy = "Random" }
+# dynamic_jito_tip_config = { strategy = "Random" }
+# dynamic_vendors_tip_amount = { strategy = "Random" }
+# dynamic_vendors_compute_unit_price = { strategy = "Random" }
 
 # [misc]
 # print_stats_interval = 1
