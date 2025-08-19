@@ -15,14 +15,13 @@ grpc_url = "xxx"        # your grpc URL
 # timeout = 5
 # copy_jito_no_failure_only = true
 # fees_history_size = 40
+# rr_timespan = 5
 
 # [sending]
 # process_delay = 400
 # default_lookup_tables = ["4sKLJ1Qoudh8PJyqBeuKocYdsZvxTcRShUt9aKqwhgvC"]
-# max_jito_tip_lamports = 1_000_000
-# max_priority_fees_lamports = 1_000_000
-# compute_units = { strategy = "Percentage", percentage = 100 }
-# dynamic_compute_unit_price = { strategy = "Random" }
+# compute_units = { strategy = "Copy" }
+# dynamic_compute_unit_price = { strategy = "Random", maximum_lamports = 1_000_000 }
 # dynamic_jito_tip_config = { strategy = "Random" }
 # dynamic_vendors_tip_amount = { strategy = "Random" }
 # dynamic_vendors_compute_unit_price = { strategy = "Random" }
@@ -30,3 +29,6 @@ grpc_url = "xxx"        # your grpc URL
 # [misc]
 # print_stats_interval = 1
 # stop_sol_threshold = 0.1
+# print_wallets_count = 20
+# log_session_start = true
+# log_session_end = true
