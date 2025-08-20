@@ -7,6 +7,6 @@
 
 📘 Refer to [the full documentation](https://hweippy.gitbook.io/copychain) for detailed setup.
 
-🤝 Join the [dedicated Discord server](https://discord.gg/s9AQ7MHq).
+🤝 Join the [dedicated Discord server](https://discord.gg/SCgdr3SYxr).
 
 ![image](https://github.com/user-attachments/assets/e133a502-1b7c-43a0-812f-b02ee43d9abe)
