@@ -1,9 +1,10 @@
-# CopyChain
+
+![banner](https://github.com/user-attachments/assets/e67db72e-3e28-4ca1-afa6-798eb4766e95)
 
 <p align="center"></p>
 
-[![Discord](https://img.shields.io/badge/Discord-CopyChain_Community-2c2f33?logo=discord&logoColor=white&labelColor=7289da)](https://discord.gg/SCgdr3SYxr)
-[![Doc](https://img.shields.io/badge/Documentation-2c2f33?logo=gitbook&labelColor=white&logoColor=2c2f33)](https://hweippy.gitbook.io/copychain)
+[![Discord](https://img.shields.io/badge/Discord_Community-2c2f33?logo=discord&logoColor=white&labelColor=7289da)](https://discord.gg/SCgdr3SYxr)
+[![Doc](https://img.shields.io/badge/Documentation-2c2f33?logo=gitbook&labelColor=2c6a8d&logoColor=white)](https://hweippy.gitbook.io/copychain)
 
 `copychain` is a Linux tool that allows you to copy onchain trading sessions of any SolanaMevBot (SMB) and NotArb wallet by wrapping the `smb-onchain` binary.
 
