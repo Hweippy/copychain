@@ -15,16 +15,27 @@ grpc_url = "xxx"        # your grpc URL
 # timeout = 5
 # copy_jito_no_failure_only = true
 # fees_history_size = 40
-# rr_timespan = 5
+# stats_timespan = 5
 
 # [sending]
 # process_delay = 400
 # default_lookup_tables = ["4sKLJ1Qoudh8PJyqBeuKocYdsZvxTcRShUt9aKqwhgvC"]
-# compute_units = { strategy = "Copy" }
-# dynamic_compute_unit_price = { strategy = "Random", maximum_lamports = 1_000_000 }
-# dynamic_jito_tip_config = { strategy = "Random" }
-# dynamic_vendors_tip_amount = { strategy = "Random" }
-# dynamic_vendors_compute_unit_price = { strategy = "Random" }
+# compute_units_limit = { source = "Copy" }
+# spam_compute_unit_price = { source = "Copy" }
+# jito_tip = { source = "Copy" }
+# vendors_tip = { source = "Copy", maximum_lamports = 1_000_000 }
+# vendors_compute_unit_price = { source = "Copy" }
+
+# [sending.helius_fee_api]
+# api_keys = ["xxx"]
+# percentile = 25
+# update_interval = 15
+# lookback_slots = 150
+# account_keys = ["NA247a7YE9S3p9CdKmMyETx8TTwbSdVbVYHHxpnHTUV", "MEViEnscUm6tsQRoGd9h6nLQaQspKj7DB2M5FwM3Xvz"]
+
+# [sending.jito_tip_api]
+# percentile = 25
+# update_interval = 15
 
 # [misc]
 # print_stats_interval = 1
