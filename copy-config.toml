@@ -28,13 +28,13 @@ grpc_url = "xxx"        # your grpc URL
 
 # [sending.helius_fee_api]
 # api_keys = ["xxx"]
-# percentile = 25
+# percentile = { from = 50, to = 50 }
 # update_interval = 15
 # lookback_slots = 150
 # account_keys = ["NA247a7YE9S3p9CdKmMyETx8TTwbSdVbVYHHxpnHTUV", "MEViEnscUm6tsQRoGd9h6nLQaQspKj7DB2M5FwM3Xvz"]
 
 # [sending.jito_tip_api]
-# percentile = 25
+# percentile = { from = "ema50", to = "ema50" }
 # update_interval = 15
 
 # [misc]
