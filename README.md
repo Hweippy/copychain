@@ -15,8 +15,8 @@
 # Monitor. Copy. Profit.
 
 Follow all SMB and NotArb users to spot hidden gems and replicate their success:
-  
-<img width="1444" height="347" alt="image" src="https://github.com/user-attachments/assets/20b8dad5-9dfa-4d61-82e2-397c22a89d19" />
+
+<img width="1446" height="344" alt="image" src="https://github.com/user-attachments/assets/eb58b563-22b8-4415-9175-c34375bcccff" />
 
 Track your sessions and stats in real time for instant insights:
 
