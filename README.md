@@ -10,13 +10,13 @@
 
 📘 Refer to [the full documentation](https://hweippy.gitbook.io/copychain) for detailed setup.
 
-🤝 Join the [dedicated Discord server](https://discord.gg/SCgdr3SYxr).
+🤝 Connect with the community on our [Discord server](https://discord.gg/SCgdr3SYxr).
 
 # Monitor. Copy. Profit.
 
 Follow all SMB and NotArb users to spot hidden gems and replicate their success:
 
-<img width="1446" height="344" alt="image" src="https://github.com/user-attachments/assets/eb58b563-22b8-4415-9175-c34375bcccff" />
+<img width="1440" height="547" alt="image" src="https://github.com/user-attachments/assets/42df8d03-44b9-41d0-9943-315762178500" />
 
 Track your sessions and stats in real time for instant insights:
 
