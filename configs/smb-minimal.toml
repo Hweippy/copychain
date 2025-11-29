@@ -1,0 +1,41 @@
+[bot]
+merge_mints = true
+compute_unit_limit = 600_000
+skip_ata_creation = true
+
+[rpc]
+url = "" # your read rpc URL here
+
+[spam]
+enabled = true
+sending_rpc_urls = [""] # your send rpc URL here
+compute_unit_price = { strategy = "Random", from = 1, to = 1, count = 1 }
+max_retries = 0
+
+[jito]
+enabled = true
+block_engine_urls = [
+  "https://ny.mainnet.block-engine.jito.wtf/api/v1",
+  "https://tokyo.mainnet.block-engine.jito.wtf/api/v1",
+  "https://slc.mainnet.block-engine.jito.wtf/api/v1",
+  "https://frankfurt.mainnet.block-engine.jito.wtf/api/v1",
+  "https://amsterdam.mainnet.block-engine.jito.wtf/api/v1",
+  "https://london.mainnet.block-engine.jito.wtf/api/v1",
+  "https://singapore.mainnet.block-engine.jito.wtf/api/v1",
+  "https://dublin.mainnet.block-engine.jito.wtf/api/v1",
+]
+use_separate_tip_account = false
+uuid = ""  # your jito uuid here
+no_failure_mode = true
+block_engine_strategy = "AllAtOnce"
+tip_config = { strategy = "Random", from = 1, to = 1, count = 1 }
+
+[flashloan]
+enabled = true
+
+[auto_rebalance]
+min_sol_balance = 1_000_000_000 # 1 SOL
+min_wsol_balance = 1            # 0.000000001 SOL
+compute_unit_price = 100_000    # How much fee you pay for the rebalance tx 
+
+[wallet]

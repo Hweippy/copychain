@@ -18,8 +18,16 @@
 
 Follow all SMB and NotArb users to spot hidden gems and replicate their success:
 
+```bash
+./copychain monitor configs/monitor.toml
+```
+
 ![image](https://github.com/user-attachments/assets/42df8d03-44b9-41d0-9943-315762178500)
 
 Track your sessions and stats in real time for instant insights:
+
+```bash
+./copychain copy configs/copy-config.toml
+```
 
 ![image](https://github.com/user-attachments/assets/e133a502-1b7c-43a0-812f-b02ee43d9abe)

@@ -1,0 +1,5 @@
+my_pubkey = "xxx"    # your wallet pubkey
+rpc_url = "xxx"      # your rpc URL
+grpc_url = "xxx"     # your grpc URL
+
+copy_all = true      # monitor all wallets

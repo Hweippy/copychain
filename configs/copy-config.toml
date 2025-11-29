@@ -1,0 +1,22 @@
+# Full documentation: https://hweippy.gitbook.io/copychain/configuration/parameters
+
+my_pubkey = "XXX"       # your wallet pubkey
+grpc_url = "XXX"        # your grpc URL
+copy_pubkeys = ["XXX"]  # wallet to copy
+
+[engine]
+bot = "copy"   # engine to use: "copy", "notarb", "smb"
+
+[engine.notarb]
+config = "./configs/notarb-minimal.toml"      # path to notarb config
+install_dir = "XXX"                           # path to notarb installation directory 
+
+[engine.smb]
+config = "./configs/smb-minimal.toml"         # path to smb config
+binary = "XXX"                                # path to smb binary
+
+# Copy compute units limit, spam compute unit price and jito tip from monitored wallet
+[sending]
+compute_units_limit = { source = "Copy" }
+spam_compute_unit_price = { source = "Copy" }
+jito_tip = { source = "Copy" }
