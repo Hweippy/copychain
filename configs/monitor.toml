@@ -1,5 +1,6 @@
-my_pubkey = "xxx"    # your wallet pubkey
-rpc_url = "xxx"      # your rpc URL
-grpc_url = "xxx"     # your grpc URL
+my_pubkey = "xxx"    # (optional) your wallet pubkey
+
+grpc_url = "https://solana-yellowstone-grpc.publicnode.com" 
+rpc_url = "https://solana-rpc.publicnode.com"
 
 copy_all = true      # monitor all wallets
