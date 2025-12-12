@@ -22,7 +22,8 @@ Follow all SMB and NotArb users to spot hidden gems and replicate their success:
 ./copychain monitor configs/monitor.toml
 ```
 
-![image](https://github.com/user-attachments/assets/42df8d03-44b9-41d0-9943-315762178500)
+![image](https://github.com/user-attachments/assets/7a0ea1ae-6ed5-43a7-b235-6c80e253fa3c)
+
 
 Track your sessions and stats in real time for instant insights:
 
