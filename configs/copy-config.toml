@@ -10,6 +10,7 @@ bot = "copy"   # engine to use: "copy", "notarb", "smb"
 [engine.notarb]
 config = "./configs/notarb-minimal.toml"      # path to notarb config
 install_dir = "XXX"                           # path to notarb installation directory 
+meteora_bin_limit = { source = "Copy" }
 
 [engine.smb]
 config = "./configs/smb-minimal.toml"         # path to smb config
