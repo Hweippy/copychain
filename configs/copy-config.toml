@@ -20,3 +20,5 @@ binary = "XXX"                                # path to smb binary
 compute_units_limit = { source = "Copy" }
 spam_compute_unit_price = { source = "Copy" }
 jito_tip = { source = "Copy" }
+vendors_tip = { source = "Copy", minimum_lamports = 5_000 }
+vendors_compute_unit_price = { source = "Copy" }
