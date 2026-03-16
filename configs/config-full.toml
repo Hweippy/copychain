@@ -1,0 +1,403 @@
+# ==============================================================================
+# CopyChain — Full Configuration Reference
+# All fields are commented out. Uncomment and fill in the values you need.
+# Defaults are shown where applicable.
+#
+# Full documentation: https://hweippy.gitbook.io/copychain/configuration/parameters
+#
+# ==============================================================================
+
+
+# ------------------------------------------------------------------------------
+# Path to your private key file (JSON array or Base58, one line).
+# ------------------------------------------------------------------------------
+# private_key = "./wallet.json"
+
+# ------------------------------------------------------------------------------
+# Addresses of wallets to copy.
+# ------------------------------------------------------------------------------
+# copy_pubkeys = []
+
+# ------------------------------------------------------------------------------
+# Copy every wallet on-chain. Use with extreme caution in `copy` mode.
+# ------------------------------------------------------------------------------
+# copy_all = false
+
+
+# ==============================================================================
+# [reading] — RPC & gRPC connection settings
+# ==============================================================================
+[reading]
+
+# HTTP/HTTPS URL of your Solana RPC provider (required).
+# rpc_url = "https://your-rpc-provider.com"
+
+# gRPC endpoint for real-time low-latency transaction monitoring (required).
+# grpc_url = "https://your-grpc-provider.com"
+
+# Auth token / API key for your gRPC provider.
+# grpc_token = "your-token"
+
+# Compression algorithm for the gRPC stream: "none", "gzip", or "zstd".
+# grpc_compression = "zstd"
+
+# Enable if your gRPC provider blocks `any` subscription stream.
+# grpc_light = false
+
+
+# ==============================================================================
+# [sending] — General transaction sending settings
+# ==============================================================================
+[sending]
+
+# Onchain program used to send transactions: "smb", "notarb", or "copy".
+# bot_engine = "copy"
+
+# Fallback engine when `bot_engine = "copy"` and the copied wallet uses
+# something other than SMB or NotArb.
+# bot_engine_fallback = "notarb"
+
+# Use flashloans to execute arbitrage with more capital than your wallet holds.
+# flashloan = true
+
+# Automatically set account data size per transaction to improve landing rate.
+# set_accounts_data_size = true
+
+
+# ==============================================================================
+# [sending.defaults] — Global defaults inherited by all senders (spam, jito,
+# vendors). Any field here can be overridden in a specific sender section.
+# ==============================================================================
+[sending.defaults]
+
+# Enable or disable this sender configuration.
+# enabled = true
+
+# Delay in milliseconds before each transaction sending round.
+# process_delay = 400
+
+# Number of transactions to send per `process_delay` interval.
+# count = 1
+
+# Meteora bin limit: "copy" mirrors the target's limit, "fixed" sets a value.
+# meteora_bin_limit = { source = "copy" }
+
+# Compute units limit per transaction.
+# compute_units_limit = { source = "copy" }
+
+# Compute unit price (micro-lamports).
+# compute_unit_price = { source = "copy" }
+
+# Tip strategy for Jito or vendor tips. Same options as compute_unit_price,
+# but source also accepts "jito" (Jito tip API) or "temporal" (Temporal API).
+# tip = { source = "copy" }
+
+# ID of the nonce accounts pool to use. See [nonces] section.
+# nonces_id = "my-pool"
+
+# Fail the transaction on-chain if it yields no profit.
+# Disable for Jito with a UUID to avoid ban risk.
+# fail_if_no_profit = true
+
+# List of RPC/sender URLs to submit transactions (required for [sending.spam]).
+# urls = ["https://..."]
+
+# How to use multiple URLs: "parallel" (all at once) or "serial" (one by one).
+# urls_strategy = "parallel"
+
+# Authentication keys / headers required by some vendors.
+# auth_keys = []
+
+# Specific public keys to use as tip addresses (defaults are auto-set for
+# Jito and known vendors).
+# tip_addresses = []
+
+
+# ==============================================================================
+# [sending.spam] — Spam sender configuration.
+# Inherits all fields from [sending.defaults]; override any field here.
+# ==============================================================================
+[sending.spam]
+
+
+# ==============================================================================
+# [sending.jito] — Jito sender configuration.
+# Inherits all fields from [sending.defaults]; override any field here.
+# ==============================================================================
+[sending.jito]
+fail_if_no_profit = false    # Recommended: disable to avoid Jito UUID ban.
+# auth_keys = ["your-jito-uuid"]
+
+
+# ==============================================================================
+# [[sending.vendors]] — Third-party sender(s) (repeatable section).
+# Inherits all fields from [sending.defaults]; override any field here.
+# Supported: helius, aura, node1, falcon, blocksprint, temporal, stellium,
+#            zeroslot, astralane, lunar, lightbridge.
+# ==============================================================================
+[[sending.vendors]]
+
+# Name of the third-party service (required).
+# vendor = "..."
+
+# auth_keys = ["your-api-key"]
+
+# Built-in URLs and tip addresses are used automatically; only set these
+# to override with a custom/private endpoint.
+# urls = ["https://custom-endpoint.com"]
+# tip_addresses = ["pubkey..."]
+
+# ==============================================================================
+# [jito_tip_api] — Jito tip API polling configuration.
+# Used when tip source = "jito".
+# ==============================================================================
+[jito_tip_api]
+
+# How often (in seconds) to refresh tip data from the Jito API.
+# update_interval = 15
+
+# Percentile range to select from. Values: 0–100 or "ema50".
+# Interpolated, so any decimal between 0 and 100 is valid.
+# percentile = { from = "ema50", to = "ema50" }
+
+
+# ==============================================================================
+# [temporal_tip_api] — Temporal tip API polling configuration.
+# Used when tip source = "temporal".
+# ==============================================================================
+[temporal_tip_api]
+
+# How often (in seconds) to refresh tip data from the Temporal API.
+# update_interval = 15
+
+# Percentile range (0–100, interpolated).
+# percentile = { from = 25, to = 50 }
+
+
+# ==============================================================================
+# [helius_fee_api] — Helius priority fee API polling configuration.
+# Used when compute_unit_price source = "helius".
+# ==============================================================================
+[helius_fee_api]
+
+# How often (in seconds) to refresh fee data from Helius.
+# update_interval = 15
+
+# Percentile range (0–100, interpolated).
+# percentile = { from = 49, to = 51 }
+
+# Number of historical slots Helius should analyze for fee estimation.
+# lookback_slots = 150
+
+# Program / market public keys to monitor for fee estimation.
+# Defaults to various arbitrage program addresses.
+# account_keys = ["pubkey1", "pubkey2"]
+
+
+# ==============================================================================
+# [[nonces]] — Nonce account pool definition (repeatable section).
+# Reference a pool via nonces_id in sender configs.
+# ==============================================================================
+[[nonces]]
+
+# Enable or disable this nonce pool.
+# enabled = true
+
+# Unique identifier for this pool, referenced by nonces_id (required).
+# id = "my-pool"
+
+# Inline list of nonce account public keys, or path to a .txt file
+# (one public key per line) (required).
+# accounts = ["pubkey1", "pubkey2"]
+
+
+# ==============================================================================
+# [sessions] — Copy session behaviour
+# ==============================================================================
+[sessions]
+
+# Mint addresses on which sessions should never be started.
+# blacklisted_mints = []
+
+# Seconds after the copied wallet stops before this tool ends the session.
+# Too low → frequent start/stop spam. Too high → stale session.
+# timeout = 3
+
+# Skip Jito sessions where bundles failed (recommended when using Jito).
+# copy_jito_no_failure_only = true
+
+# Number of past transactions kept for tip/fee history when source = "copy".
+# fees_history_size = 20
+
+
+# ==============================================================================
+# [lookup_tables] — Address Lookup Table (ALT/LUT) management
+# ==============================================================================
+[lookup_tables]
+
+# Extra ALTs to include in every transaction (add your wallet pubkey, WSOL ATA,
+# USDC ATA, nonce accounts, etc.). Do NOT add tip addresses here.
+# default = []
+
+# ALT resolution strategy:
+#   "dontlookup" — uses the DontLookup service (free, recommended; falls back
+#                  to "copy" if insufficient coverage).
+#   "copy"       — copies ALTs from the target wallet + appends `default`.
+# source = "dontlookup"
+
+# API key for DontLookup (currently unused — service is free).
+# dontlookup_key = ""
+
+# Minimum coverage % required from DontLookup before falling back to "copy".
+# dontlookup_min_percent = 75
+
+
+# ==============================================================================
+# [slot_check] — RPC slot-lag monitoring
+# ==============================================================================
+[slot_check]
+
+# Interval in seconds between RPC slot-lag checks.
+# check_interval = 30
+
+# Maximum allowed slot delta from mainnet before flagging as lagging.
+# max_distance = 5
+
+# Whether to keep copying transactions when the node is lagging.
+# false (recommended): stop to avoid stale data / expired blockhashes.
+# copy_if_lagging = false
+
+
+# ==============================================================================
+# [misc] — Miscellaneous settings
+# ==============================================================================
+[misc]
+
+# Interval in seconds between session stats display.
+# print_stats_interval = 1
+
+# SOL balance floor at which the bot stops running (in SOL, not lamports).
+# Set to 0.0 to disable.
+# stop_sol_threshold = 0.1
+
+# Log session start events.
+# log_session_start = true
+
+# Log session end events.
+# log_session_end = false
+
+# Time window in minutes for windowed statistics (R/R, profit, fees) in
+# monitor mode.
+# stats_timespan = 5
+
+# Log transaction parsing errors.
+# show_transaction_errors = true
+
+
+# ==============================================================================
+# [automation] — Automated wallet selection in `run` mode
+# ==============================================================================
+[automation]
+
+# Enable or disable automation.
+# enabled = false
+
+# Maximum number of wallets copied concurrently.
+# max_concurrent = 1
+
+# Wallets that will never be auto-selected.
+# blacklisted_pubkeys = []
+
+
+# ==============================================================================
+# [[automation.filters]] — Filter group (repeatable).
+# Groups start/stop filters and optionally scopes them to specific pubkeys.
+# ==============================================================================
+[[automation.filters]]
+
+# Enable or disable this filter group.
+# enabled = true
+
+# Pubkeys these filters apply to. If empty, uses the global copy_pubkeys.
+# copy_pubkeys = []
+
+
+# ==============================================================================
+# [[automation.filters.start]] — Criteria to START copying a wallet.
+# Evaluated against the COPIED wallet's statistics.
+# ==============================================================================
+[[automation.filters.start]]
+
+# Enable or disable this start filter.
+# enabled = true
+
+# Lookback window in seconds for statistics evaluation (required).
+# lookback_window = 60
+
+# How often (in seconds) to re-evaluate this filter.
+# interval = 1
+
+# Minimum total transactions (successes + fails).
+# min_tx = 10
+
+# Minimum number of successful arbitrages.
+# min_successes = 5
+
+# Minimum raw profit (excl. fees) in lamports.
+# min_raw_profit = 1_000_000
+
+# Minimum raw profit per successful transaction (excl. fees) in lamports.
+# min_raw_profit_per_success = 500_000
+
+# Minimum net profit (raw profit − fees) in lamports.
+# min_net_profit = 500_000
+
+# Minimum Reward/Risk ratio (1.0 = profitable).
+# min_risk_reward = 1.0
+
+# Maximum number of failed transactions allowed.
+# max_fails = 50
+
+# Maximum fees spent (priority fees + tips) in lamports.
+# max_fees = 10_000_000
+
+
+# ==============================================================================
+# [[automation.filters.stop]] — Criteria to STOP copying a wallet.
+# Evaluated against YOUR OWN statistics.
+# ==============================================================================
+[[automation.filters.stop]]
+
+# Enable or disable this stop filter.
+# enabled = true
+
+# Lookback window in seconds for statistics evaluation (required).
+# lookback_window = 60
+
+# How often (in seconds) to re-evaluate this filter.
+# interval = 1
+
+# Minimum seconds to wait before this filter is first evaluated.
+# initial_delay = 0
+
+# Minimum total transactions before the filter kicks in.
+# min_tx = 5
+
+# Minimum number of your successful arbitrages.
+# min_successes = 1
+
+# Minimum raw profit (excl. fees) you must have made, in lamports.
+# min_raw_profit = 0
+
+# Minimum net profit / PnL in lamports.
+# min_net_profit = 0
+
+# Minimum R/R ratio (1.0 = you are profitable).
+# min_risk_reward = 1.0
+
+# Maximum loss (positive value; stops when PnL ≤ -max_loss) in lamports.
+# e.g., max_loss = 1_000_000 stops at -0.001 SOL PnL.
+# max_loss = 1_000_000
+
+# Maximum fees you are willing to spend, in lamports.
+# max_fees = 10_000_000
