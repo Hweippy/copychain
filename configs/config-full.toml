@@ -32,6 +32,9 @@
 # HTTP/HTTPS URL of your Solana RPC provider (required).
 # rpc_url = "https://your-rpc-provider.com"
 
+# RPC requests timeout, in milliseconds
+# rpc_timeout_ms = 400
+
 # gRPC endpoint for real-time low-latency transaction monitoring (required).
 # grpc_url = "https://your-grpc-provider.com"
 

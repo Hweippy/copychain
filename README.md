@@ -6,7 +6,7 @@
 [![Discord](https://img.shields.io/badge/Discord_Community-2c2f33?logo=discord&logoColor=white&labelColor=7289da)](https://discord.gg/SCgdr3SYxr)
 [![Doc](https://img.shields.io/badge/Documentation-2c2f33?logo=gitbook&labelColor=2c6a8d&logoColor=white)](https://hweippy.gitbook.io/copychain)
 
-`copychain` is a Linux tool that allows you to copy Solana onchain trading sessions of any [SolanaMevBot (SMB)](https://docs.solanamevbot.com/home) and [NotArb](https://notarb.org/) wallet.
+`copychain` is a Linux tool that allows you to copy Solana onchain trading sessions of **any** arbitrage wallet.
 
 📘 Refer to [the full documentation](https://hweippy.gitbook.io/copychain) for detailed setup.
 
@@ -16,7 +16,7 @@
 
 # Monitor. Copy. Profit.
 
-Follow all SMB and NotArb users to spot hidden gems and replicate their success:
+Follow specific arbitrage programs and wallets to spot hidden gems and replicate their success:
 
 ```bash
 ./copychain monitor configs/monitor.toml
