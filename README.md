@@ -22,7 +22,8 @@ Follow specific arbitrage programs and wallets to spot hidden gems and replicate
 ./copychain monitor configs/monitor.toml
 ```
 
-![image](https://github.com/user-attachments/assets/7a0ea1ae-6ed5-43a7-b235-6c80e253fa3c)
+![image](https://github.com/user-attachments/assets/8537bbe7-feec-428c-af70-f816ca5f67d1)
+
 
 
 Track your sessions and stats in real time for instant insights:
