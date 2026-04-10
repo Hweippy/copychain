@@ -77,7 +77,7 @@
 # enabled = true
 
 # Delay in milliseconds before each transaction sending round.
-# process_delay = 400
+# process_delay = { source = "fixed", default = 400 }
 
 # Number of transactions to send per `process_delay` interval.
 # count = 1
