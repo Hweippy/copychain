@@ -89,11 +89,11 @@
 # compute_units_limit = { source = "copy" }
 
 # Compute unit price (micro-lamports).
-# compute_unit_price = { source = "copy" }
+# compute_unit_price = [{ source = "copy" }]
 
 # Tip strategy for Jito or vendor tips. Same options as compute_unit_price,
 # but source also accepts "jito" (Jito tip API) or "temporal" (Temporal API).
-# tip = { source = "copy" }
+# tip = [{ source = "copy" }]
 
 # ID of the nonce accounts pool to use. See [nonces] section.
 # nonces_id = "my-pool"
