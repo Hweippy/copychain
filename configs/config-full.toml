@@ -53,7 +53,7 @@
 # ==============================================================================
 [sending]
 
-# Onchain program used to send transactions: "smb", "notarb", or "copy".
+# Onchain program used to send transactions: "smb", "notarb", "prism" or "copy".
 # bot_engine = "copy"
 
 # Fallback engine when `bot_engine = "copy"` and the copied wallet uses
