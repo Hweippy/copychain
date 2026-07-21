@@ -1,0 +1,31 @@
+private_key = "/path/to/wallet"
+
+[[markets]]
+base_mint = "So11111111111111111111111111111111111111112"
+addresses = [
+    "4d8Vp7UdpkjG8aYKHPsnzjXSaxNhwHomrPD8Q612ixek",
+    "k1F3d5WQAtbrzkYtJuV7FJKcWuE72n3Rf4wWfGvy2kv",
+]
+
+[reading]
+rpc_url = "http://..."
+grpc_url = "http://..."
+
+[sending.defaults]
+process_delay = { source = "fixed", default = 400 }
+compute_units_limit = { source = "local", minimum = 300000, maximum = 300000 }
+
+[sending.spam]
+compute_unit_price = [{ source = "local", minimum = 1000, maximum = 1100 }]
+urls = ["https://api.mainnet-beta.solana.com"]
+
+[sending.jito]
+auth_keys = ["..."]
+fail_if_no_profit = false
+tip = [{ source = "local", minimum = 10000, maximum = 16000 }]
+compute_unit_price = [{ source = "local", minimum = 0, maximum = 0 }]
+
+[[sending.vendors]]
+vendor = "helius"
+compute_unit_price = [{ source = "local", minimum = 1000, maximum = 1100 }]
+tip = [{ source = "local", minimum = 10000, maximum = 15000 }]
