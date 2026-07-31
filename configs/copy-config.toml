@@ -8,7 +8,7 @@ rpc_url = "..."
 grpc_url = "..."
 
 [sending.spam]
-rpc_urls = ["..."]
+urls = ["..."]
 
 [sending.jito]
 auth_keys = ["..."]        # your jito UUID here
