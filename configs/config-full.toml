@@ -53,13 +53,6 @@
 # ==============================================================================
 [sending]
 
-# Onchain program used to send transactions: "smb", "notarb", "prism" or "copy".
-# bot_engine = "copy"
-
-# Fallback engine when `bot_engine = "copy"` and the copied wallet uses
-# something other than SMB or NotArb.
-# bot_engine_fallback = "notarb"
-
 # Use flashloans to execute arbitrage with more capital than your wallet holds.
 # flashloan = true
 
