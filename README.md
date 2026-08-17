@@ -14,6 +14,8 @@
 
 🚀 [Download now](https://github.com/Hweippy/copychain/releases/latest) and get started.
 
+💎 [Powered by Prism](https://github.com/Hweippy/prism-client-sdk), our onchain just-in-time routing engine.
+
 # Monitor. Copy. Profit.
 
 Follow specific arbitrage programs and wallets to spot hidden gems and replicate their success:
