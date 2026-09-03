@@ -1,8 +1,9 @@
+[reading]
 rpc_url = "..."                                              # Your RPC url
 
 ## Using free gRPC from allnodes
 grpc_url = "https://solana-yellowstone-grpc.publicnode.com"
-grpc_token = "..."                                           # Grab your free token here https://www.allnodes.com/publicnode 
+grpc_token = "..."    # Grab your free token here https://www.allnodes.com/publicnode 
 grpc_compression = "none"
 
 ## Or your gRPC
