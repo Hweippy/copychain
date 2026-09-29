@@ -16,16 +16,17 @@ process_delay = { source = "fixed", default = 400 }
 compute_units_limit = { source = "local", minimum = 300000, maximum = 300000 }
 
 [sending.spam]
-compute_unit_price = [{ source = "local", minimum = 1000, maximum = 1100 }]
+# Total priority fee in lamports (300-330 matches the former price at 300,000 CU).
+priority_fee = [{ source = "local", minimum = 300, maximum = 330 }]
 urls = ["https://api.mainnet-beta.solana.com"]
 
 [sending.jito]
 auth_keys = ["..."]
 fail_if_no_profit = false
 tip = [{ source = "local", minimum = 10000, maximum = 16000 }]
-compute_unit_price = [{ source = "local", minimum = 0, maximum = 0 }]
+priority_fee = [{ source = "local", minimum = 0, maximum = 0 }]
 
 [[sending.vendors]]
 vendor = "helius"
-compute_unit_price = [{ source = "local", minimum = 1000, maximum = 1100 }]
+priority_fee = [{ source = "local", minimum = 300, maximum = 330 }]
 tip = [{ source = "local", minimum = 10000, maximum = 15000 }]

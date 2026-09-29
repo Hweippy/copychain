@@ -23,6 +23,10 @@
 # ------------------------------------------------------------------------------
 # copy_all = false
 
+# Optional dynamically reloaded program list; requires grpc_light = false.
+# File contents: one program pubkey per line. Paths are relative to this config.
+# arbitrage_programs = { file = "arb-programs.txt", update_ms = 1000 }
+
 
 # ==============================================================================
 # [reading] — RPC & gRPC connection settings
@@ -33,7 +37,7 @@
 # rpc_url = "https://your-rpc-provider.com"
 
 # RPC requests timeout, in milliseconds
-# rpc_timeout_ms = 400
+# rpc_timeout_ms = 250
 
 # gRPC endpoint for real-time low-latency transaction monitoring (required).
 # grpc_url = "https://your-grpc-provider.com"
@@ -47,6 +51,10 @@
 # Enable if your gRPC provider blocks `any` subscription stream.
 # grpc_light = false
 
+# Optional replacement for the default light-mode account filter.
+# Must be nonempty when grpc_light = true. Changes require a restart.
+# grpc_light_accounts = ["Prism8hsRo6Ww5jiN5Zeh3YDPLZHqHduCPSAV7JF7qv"]
+
 
 # ==============================================================================
 # [sending] — General transaction sending settings
@@ -56,8 +64,10 @@
 # Use flashloans to execute arbitrage with more capital than your wallet holds.
 # flashloan = true
 
-# Automatically set account data size per transaction to improve landing rate.
-# set_accounts_data_size = true
+# Account-data sizing is automatic and required.
+
+# Pump AMM / Meteora DLMM search autosizing.
+# use_autosizing = true
 
 
 # ==============================================================================
@@ -66,25 +76,39 @@
 # ==============================================================================
 [sending.defaults]
 
+# Optional V1 sending; requires network and sender support. No automatic fallback.
+# tx_v1 = false
+
+# Optional public transaction memo. Empty string disables an inherited memo.
+# memo = ""
+
+# Dynamic file references are supported for enabled; numeric minimum/maximum/
+# percentage fields in compute_units_limit, priority_fee and tip; and numeric
+# default/minimum/maximum/percentage fields in process_delay.
+# Files contain plain integers or true/false. Invalid updates keep valid settings.
+# Example alternative: enabled = { file = "sender-enabled.txt", update_ms = 1000 }
+
 # Enable or disable this sender configuration.
 # enabled = true
 
 # Delay in milliseconds before each transaction sending round.
-# process_delay = { source = "fixed", default = 400 }
+# process_delay = { source = "fixed", default = 250 }
 
 # Number of transactions to send per `process_delay` interval.
 # count = 1
 
-# Meteora bin limit: "copy" mirrors the target's limit, "fixed" sets a value.
-# meteora_bin_limit = { source = "copy" }
+# Manual walk limit when autosizing is disabled.
+# max_dynamic_walk_steps = 12
 
 # Compute units limit per transaction.
 # compute_units_limit = { source = "copy" }
 
-# Compute unit price (micro-lamports).
-# compute_unit_price = [{ source = "copy" }]
+# Total priority fee in lamports per transaction, excluding base fees and tips.
+# Default bounds: minimum = 0, maximum = 100_000_000.
+# Sources include copySpamFee, copyJitoFee, copyVendorFee, copyJitoTip, copyVendorTip.
+# priority_fee = [{ source = "copy" }]
 
-# Tip strategy for Jito or vendor tips. Same options as compute_unit_price,
+# Tip strategy for Jito or vendor tips. Same options as priority_fee,
 # but source also accepts "jito" (Jito tip API) or "temporal" (Temporal API).
 # tip = [{ source = "copy" }]
 
@@ -172,7 +196,7 @@ fail_if_no_profit = false    # Recommended: disable to avoid Jito UUID ban.
 
 # ==============================================================================
 # [helius_fee_api] — Helius priority fee API polling configuration.
-# Used when compute_unit_price source = "helius".
+# Used when priority_fee source = "helius".
 # ==============================================================================
 [helius_fee_api]
 
@@ -219,10 +243,7 @@ fail_if_no_profit = false    # Recommended: disable to avoid Jito UUID ban.
 # Too low → frequent start/stop spam. Too high → stale session.
 # timeout = 3
 
-# Skip Jito sessions where bundles failed (recommended when using Jito).
-# copy_jito_no_failure_only = true
-
-# Number of past transactions kept for tip/fee history when source = "copy".
+# Slot-history window for copied priority fees and tips.
 # fees_history_size = 20
 
 
@@ -239,6 +260,8 @@ fail_if_no_profit = false    # Recommended: disable to avoid Jito UUID ban.
 #   "dontlookup" — uses the DontLookup service (free, recommended; falls back
 #                  to "copy" if insufficient coverage).
 #   "copy"       — copies ALTs from the target wallet + appends `default`.
+#   "local"      — uses only the configured default ALTs.
+# ALTs apply to V0 transactions; V1 does not use them.
 # source = "dontlookup"
 
 # API key for DontLookup (currently unused — service is free).
@@ -269,12 +292,15 @@ fail_if_no_profit = false    # Recommended: disable to avoid Jito UUID ban.
 # ==============================================================================
 [misc]
 
-# Interval in seconds between session stats display.
-# print_stats_interval = 1
+# Transaction explorer: "solscan", "circular", or "orb". Restart to apply.
+# tx_explorer = "solscan"
+
+# Interval in milliseconds between session stats display.
+# print_stats_interval_ms = 1000
 
 # SOL balance floor at which the bot stops running (in SOL, not lamports).
 # Set to 0.0 to disable.
-# stop_sol_threshold = 0.1
+# stop_sol_threshold = 0.01
 
 # Log session start events.
 # log_session_start = true
@@ -291,7 +317,7 @@ fail_if_no_profit = false    # Recommended: disable to avoid Jito UUID ban.
 
 
 # ==============================================================================
-# [automation] — Automated wallet selection in `run` mode
+# [automation] — Automated wallet selection in `copy` mode
 # ==============================================================================
 [automation]
 
